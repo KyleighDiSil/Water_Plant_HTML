@@ -1,0 +1,115 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    background-color: #f1f1f1;
+    padding-bottom:  58px; /*footer height*/
+    position: relative;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    width: 100vw;
+    background-color: #333;
+    padding: 20px;
+}
+
+header h1{
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #2785bb, #27bb47);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+header p {
+    background: linear-gradient(to right, #2785bb, #27bb47);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+main {
+    width: 100vw;
+    /* This works well for every browser except maybe IE
+    min-height: calc(100vh -211px -58px); viewport height minus header height minus footer height
+    */
+}
+
+footer {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+}
+
+.title{
+    font-style: normal;
+    color: #231f20;
+    text-align: center;
+    font-size: 40px;
+    padding: 10px;
+}
+
+svg{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    margin:20px;
+    border: 3px solid rgb(43, 255, 0);
+}
+
+.img{
+    display: flex;
+    width: auto;
+    border: 3px solid rgb(255, 145, 0);
+}
+
+.content{
+    margin: 20px;
+    padding: 5px;
+    border: 3px solid rgb(0, 183, 255);
+}
+
+/*Pipe7*/
+.cls-9{fill:none;stroke-linejoin:round;stroke:#231f20;stroke-width:3.5px;}
+.c71{fill:none;stroke-linejoin: round;stroke: green;stroke-width: 3.5px;}
+.cls-10{fill:none;stroke-linejoin:round;stroke:green;stroke-width:2.23px;}
+.cls-11{stroke:green;fill:#fff;stroke-miterlimit:10;stroke-width:3px;}
+.cls-12{stroke:#231f20;fill:#fff;stroke-miterlimit:10;stroke-width:6px;}
+
+/*Pipe7_2*/
+.cls-9_2{fill:none;stroke-linejoin:round;stroke:#231f20;stroke-width:3.5px;}
+.c721{fill:none;stroke-linejoin: round;stroke: green;stroke-width: 3.5px;}
+.cls-10_2{fill:none;stroke-linejoin:round;stroke:green;stroke-width:2.23px;}
+.cls-11_2{stroke:green;fill:#fff;stroke-miterlimit:10;stroke-width:3px;}
+.cls-12_2{stroke:#231f20;fill:#fff;stroke-miterlimit:10;stroke-width:6px;}
+
+/*The classes switched to for all pipe 7's when problem occurs for animation*/
+.pressure{fill:none;stroke-linejoin: round;stroke-width: 3.5px;animation: water_psi 1s infinite;}
+.pressure2{fill:none;stroke-linejoin:round;stroke-width:2.23px;animation: water_psi 1s infinite;}
+.pressure3{fill:#fff;stroke-miterlimit:10;stroke-width:3px;animation: water_psi 1s infinite;}
+
+.pressure4{fill:none;stroke-linejoin: round;stroke-width: 3.5px;animation: water_psi 1s infinite;}
+.pressure5{fill:none;stroke-linejoin:round;stroke-width:2.23px;animation: water_psi 1s infinite;}
+.pressure6{fill:#fff;stroke-miterlimit:10;stroke-width:3px;animation: water_psi 1s infinite;}
+
+
+/*Makes the Gauge flash red and yellow*/
+@keyframes water_psi {
+    0%{
+        stroke: red;
+    }
+    50%{
+        stroke: yellow;
+    }
+    100%{
+        stroke:red;
+    }
+  }

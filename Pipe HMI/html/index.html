@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piping System HMI</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Phoenix Contact</h1>
+        <p>Water Piping System</p>
+    </header>
+
+    <main>
+        <style>
+            /* This will give my SVG a blue border
+            .container {
+		        border: 3px solid rgb(0, 183, 255);
+	        }*/
+        </style>
+        <div class = "container">
+            <!--The SVG is called here-->
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1300 540" width="100%" height="100%" style="enable-background:new 0 0 197.3 195.5;" xml:space="preserve">
+                <use xlink:href="#pipeSystem" transform="translate(100)"/>
+
+                <!--All of the SVG buttons-->
+                <g id="buttons">
+                    <g id="PSI1" onclick="water_psi()">
+                        <rect class="water_psi" x="0" y="0" width="70" height="30" rx="5"/>
+                        <text x="2px" y="18px">Water PSI</text>
+                    </g>
+
+                    <g id="PSI2" onclick="water_psi2()">
+                        <rect class="water_psi" x="0" y="0" width="80" height="30" rx="5"/>
+                        <text x="3px" y="18px">Water PSI2</text>
+                    </g>
+
+                    <g id="RP1" onclick="rPump()">
+                        <rect class="pump" x="0" y="0" width="50" height="30" rx="5"/>
+                        <text x="13px" y="18px">RP1</text>
+                    </g>
+
+                    <g id="RP2" onclick="rPump2()">
+                        <rect class="pump" x="0" y="0" width="50" height="30" rx="5"/>
+                        <text x="13px" y="18px">RP2</text>
+                    </g>
+
+                    <g id="TP1" onclick="tPump()">
+                        <rect class="pump" x="0" y="0" width="50" height="30" rx="5"/>
+                        <text x="5px" y="18px">TallP1</text>
+                    </g>
+
+                    <g id="TP2" onclick="tPump2()">
+                        <rect class="pump" x="0" y="0" width="50" height="30" rx="5"/>
+                        <text x="5px" y="18px">TallP2</text>
+                    </g>
+
+                    <g id="switch1" onclick="switch1()">
+                        <rect class="switch" x="0" y="0" width="50" height="30" rx="5"/>
+                        <text x="3px" y="18px">Valve1</text>
+                    </g>
+
+                    <g id="switch2" onclick="switch2()">
+                        <rect class="switch" x="0" y="0" width="50" height="30" rx="5"/>
+                        <text x="3px" y="18px">Valve2</text>
+                    </g>
+
+                    <g id="switch3" onclick="switch3()">
+                        <rect class="switch" x="0" y="0" width="50" height="30" rx="5"/>
+                        <text x="3px" y="18px">Valve3</text>
+                    </g>
+                </g>
+            </svg> 
+        </div>
+
+    </main>
+
+    <footer>
+        <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script>, Piping HMI</p>
+    </footer>
+</body>
+
+</html>
+
+<!--How the ID's were made:
+
+Take the element first letter: (note for pumps put _ after letter so r_ p_ c_ L_)
+<rect> = r
+<path> = p
+<circle> = c
+<line> = L 
+<polygon> = po
+
+Then take the pipe number (ex: pipe1 = 1 pipe1_2 = 12)
+
+Then add a number to the end according to how many rectangles are in the group called pipe#:
+<g class="pipe#">
+    <rect> = 1 (because first rect to appear in group)
+    <line> = 1
+    <rect> = 2
+    <rect> = 3
+    <path> = 1
+    <path> = 2
+
+add it all together: id="r11" (in pipe 1 first rectangle)
+
+-->
+<svg id="hidden_svg" width="0px" height="0px">
+    <symbol id="pipeSystem">
+
+        <!--Tank 1 water-->
+        <g id="banner">
+            <clipPath id="shape">   
+                <use xlink:href="#p_61" class="pump6"></use>
+            </clipPath>
+                <g clip-path="url(#shape)">
+                    <g class="fill">
+                        <rect id="fill_level1" fill="rgb(36, 164, 249)" id="wavepath" x="0" y="0" width="500px" height="500px"/>
+                    </g>
+                </g>
+        </g>
+
+        <!--water 1-->
+        <g id="banner2">
+            <clipPath id="shape2">   
+                <use xlink:href="#r51" class="pipe5"></use>
+                <use xlink:href="#r52" class="pipe5"></use>
+                <use xlink:href="#r53" class="pipe5"></use>
+                <use xlink:href="#r21" class="pipe2"></use>
+                <use xlink:href="#r22" class="pipe2"></use>
+                <use xlink:href="#p21" class="pipe2"></use>
+            </clipPath>
+                <g clip-path="url(#shape2)">
+                    <g>
+                        <path class="water1" id="water1" fill="none" stroke-width="25px" stroke="none" d="M130 60 H200 c60 0 50 0 50 26z"></path>
+                    </g>
+                </g>
+        </g>
+
+        <!--water 3-->
+        <g id="banner4">
+            <clipPath id="shape4">   
+                <use xlink:href="#p_22" class="pump2"></use>
+                <use xlink:href="#r11" class="pipe1"></use>
+                <use xlink:href="#r12" class="pipe1"></use>
+                <use xlink:href="#p81" class="pipe8"></use>
+                <use xlink:href="#r82" class="pipe8"></use>
+                <use xlink:href="#r32" class="pipe3"></use>
+                <use xlink:href="#r33" class="pipe3"></use>
+                <use xlink:href="#p11" class="pipe1"></use>
+                <use xlink:href="#p121" class="pipe1_2"></use>
+                <use xlink:href="#r122" class="pipe1_2"></use>
+            </clipPath>
+                <g clip-path="url(#shape4)">
+                    <g>
+                        <path class="water3" id="water3" fill="none" stroke-width="25px" stroke="none" d="m 31.917977,21.811677 1.61935,59.5198 47.14795,1.48888 0.99259,25.311003 97.769943,0.99259 -0.49629,-34.740593" transform="translate(220 125)"></path>
+                    </g>
+                </g>
+        </g>
+        
+        <!--Banner 3 needs to be after 4 because of an overlap in the paths making a gap of #f1f1f1(off white) color-->
+        <!--water 2-->
+        <g id="banner3">
+            <clipPath id="shape3">   
+                <use xlink:href="#p_21" class="pump2"></use>
+                <use xlink:href="#r1" class="pipe1"></use>
+            </clipPath>
+                <g clip-path="url(#shape3)">
+                    <g>
+                        <path class="water2" id="water2" fill="none" stroke-width="25px" stroke="none" d="M250 86 v50 c50 65 80 -60 10 -20"></path>
+                    </g>
+                </g>
+        </g>
+
+        <!--water 4 and 5-->
+        <g id="banner5">
+            <clipPath id="shape5">   
+                <use xlink:href="#r91" class="pipe9"></use>
+                <use xlink:href="#r92" class="pipe9"></use>
+                <use xlink:href="#r93" class="pipe9"></use>
+                <use xlink:href="#p821" class="pipe8_2"></use>
+                <use xlink:href="#r822" class="pipe8_2"></use>
+                <use xlink:href="#r72" class="pipe7"></use>
+                <use xlink:href="#r73" class="pipe7"></use>
+                <use xlink:href="#r_51" class="pump5"></use>
+                <use xlink:href="#r_52" class="pump5"></use>
+                <use xlink:href="#r321" class="pipe3_2"></use>
+                <use xlink:href="#r322" class="pipe3_2"></use>
+                <use xlink:href="#r323" class="pipe3_2"></use>
+                <use xlink:href="#r832" class="pipe8_3"></use>
+                <use xlink:href="#p831" class="pipe8_3"></use>
+            </clipPath>
+                <g clip-path="url(#shape5)">
+                    <g>
+                        <path class="water4" id="water4" fill="none" stroke-width="25px" stroke="none"  d="m 559.51164,297.1529 102.92801,1.53952 2.09854,24.48299 100,0" transform="translate(-120 -170)"></path>
+                        <path class="water5" id="water5" fill="none" stroke-width="25px" stroke="none"  d="m 790,423.96038 194.05714,1.12517 -0.69947,-27.28105 42.30732,-0.42049" transform="translate(-105 -270)"></path>
+                    </g>
+                </g>
+        </g>
+
+        <g id="banner6">
+            <clipPath id="shape6">
+                <!--Water 6-->
+                <use xlink:href="#r222" class="pipe2_2"></use>
+                <use xlink:href="#p221" class="pipe2_2"></use>
+                <use xlink:href="#r221" class="pipe2_2"></use>
+                <use xlink:href="#r333" class="pipe3_3"></use>
+                <!--Water 7-->
+                <use xlink:href="#p_221" class="pump2_2"></use>
+                <use xlink:href="#r_221" class="pump2_2"></use>
+                <!--Water 8-->
+                <use xlink:href="#p_222" class="pump2_2"></use>
+                <use xlink:href="#r11" class="pipe1_2"></use>
+                <use xlink:href="#r12" class="pipe1_2"></use>
+                <use xlink:href="#r231" class="pipe2_3"></use>
+                <use xlink:href="#p231" class="pipe2_3"></use>
+                <use xlink:href="#r232" class="pipe2_3"></use>
+                <use xlink:href="#r343" class="pipe3_4"></use>
+                <use xlink:href="#r131" class="pipe1_3"></use>
+                <use xlink:href="#p131" class="pipe1_3"></use>
+                <use xlink:href="#r132" class="pipe1_3"></use>
+                <!--Water 9-->   
+                <use xlink:href="#r921" class="pipe9_2"></use>
+                <use xlink:href="#r922" class="pipe9_2"></use>
+                <use xlink:href="#r923" class="pipe9_2"></use>
+                <use xlink:href="#p841" class="pipe8_4"></use>
+                <use xlink:href="#r842" class="pipe8_4"></use>
+                <use xlink:href="#r722" class="pipe7_2"></use>
+                <use xlink:href="#r723" class="pipe7_2"></use>
+                <use xlink:href="#r_521" class="pump5_2"></use>
+                <!--Water 10-->
+                <use xlink:href="#r_522" class="pump5_2"></use>
+                <use xlink:href="#r351" class="pipe3_5"></use>
+                <use xlink:href="#r352" class="pipe3_5"></use>
+                <use xlink:href="#r353" class="pipe3_5"></use>
+                <use xlink:href="#r852" class="pipe8_5"></use>
+                <use xlink:href="#p851" class="pipe8_5"></use>
+            </clipPath>
+                <g clip-path="url(#shape6)">
+                    <g>
+                        <path class="water6" id="water6" fill="none" stroke-width="25px" stroke="none" d="m 187.43483,195.65897 44.76889,-0.69952 1.39902,275.60847" transform="translate(-70 -95)" ></path>
+                        <path class="water8" id="water8" fill="none" stroke-width="25px" stroke="none" d="m 377.35601,669.26576 0.62942,61.70461 240,-2.09854 0.69952,-39.17278" transform="translate(-215 -235)" ></path>
+                        <path class="water7" id="water7" fill="none" stroke-width="25px" stroke="none"   d="M250 86 v50 c50 65 80 -60 10 -20" transform="translate(-90 290)"></path>
+                        <path class="water9" id="water9" fill="none" stroke-width="25px" stroke="none"  d="m 559.51164,297.1529 102.92801,1.53952 2.09854,24.48299 100,0" transform="translate(-120 92)"></path>
+                        <path class="water10" id="water10" fill="none" stroke-width="25px" stroke="none" d="m 790,423.96038 194.05714,1.12517 -0.69947,-27.28105 42.30732,-0.42049" transform="translate(-105 -10)"></path>
+                    </g>
+                </g>
+        </g>
+
+        <!--These are our tanks water animations all except the first one which was done in the first banner-->
+        <!--pump 7 water-->
+        <g id="banner7">
+            <clipPath id="shape7">   
+                <use xlink:href="#p_71" class="pump7"></use>
+            </clipPath>
+                <g clip-path="url(#shape7)">
+                    <g id="fill2" class="other">
+                        <rect fill="none" id="wavepath2" x="0" y="0" width="200px" height="200px" transform="translate(300 10)"/>
+                    </g>
+                </g>
+            
+        </g>
+
+        <!--pump 6_2 water-->
+        <g id="banner8">
+            <clipPath id="shape8">   
+                <use xlink:href="#p_621" class="pump6_2"></use>
+            </clipPath>
+                <g clip-path="url(#shape8)">
+                    <g id="fill3" class="other">
+                        <rect fill="none" id="wavepath3" x="0" y="0" width="200px" height="200px" transform="translate(850)"/>
+                    </g>
+                </g>
+        </g> 
+        
+        <!--pump 6_3 water-->
+        <g id="banner9">
+            <clipPath id="shape9">   
+                <use xlink:href="#p_631" class="pump6_3"></use>
+            </clipPath>
+                <g clip-path="url(#shape9)">
+                    <g id="fill4" class="other">
+                        <rect fill="none" id="wavepath4" x="0" y="0" width="200px" height="200px" transform="translate(850 250)"/>
+                    </g>
+                </g>
+        </g>
+
+        <!--pump 7_2 water-->
+        <g id="banner10">
+            <clipPath id="shape10">   
+                <use xlink:href="#p_721" class="pump7_2"></use>
+            </clipPath>
+                <g clip-path="url(#shape10)">
+                    <g id="fill5" class="other">
+                        <rect fill="none" id="wavepath5" x="0" y="0" width="200px" height="200px" transform="translate(300 270)"/>
+                    </g>
+                </g>
+        </g>
+
+        <!--bubbles have to go after water so they show above the water and before pipes so they don't go 
+        over the pipes I did not add motion to these because there is no way to do this 
+        <g class="bubbles">
+            <circle id="bubble1" cx="0" cy="0" r="2" fill="purple"></circle>
+            <circle id="bubble2" cx="0" cy="0" r="2" fill="#f1f1f1"></circle>
+            <circle id="bubble3" cx="0" cy="0" r="2" fill="#f1f1f1"></circle>
+            <circle id="bubble4" cx="0" cy="0" r="2" fill="#f1f1f1"></circle>
+            <circle id="bubble5" cx="0" cy="0" r="2" fill="#f1f1f1"></circle>
+            <circle id="bubble6" cx="0" cy="0" r="2" fill="#f1f1f1"></circle>
+        </g>
+        <g class="bubble_paths">
+            <path id="m_path1" fill="none" stroke="none" stroke-width="2px" d="m 180.97697,228.61558 118.79976,-2.08121 0.97006,81.84683 c 1.52598,15.4781 15.27632,15.93377 25.43319,22.78097 0,0 32.15283,-7.14531 32.35591,-31.17884 0.17545,-20.76454 -23.65352,-29.46737 -29.55785,-28.2865 l -16.62098,3.94048" transform="translate(-50 -168)"/>
+            <path id="m_path2" fill="none" stroke="none" stroke-width="2px" d="m 31.917977,30.811677 1.61935,50.5198 47.14795,1.48888 0.99259,25.311003 97.769943,0.99259 -0.49629,-30" transform="translate(220 125)"/>
+            <path id="m_path3" fill="none" stroke="none" stroke-width="2px" d="m 295,167.92434 90.92801,1.53952 2.09854,24.48299 331.56953,1.39903 -0.69947,-27.28105 30,-0.42049" transform="translate(155 -40)"/>
+            <path id="m_path4" fill="none" stroke="none" stroke-width="2px" d="m 76.02907,127.91982 31.46783,0.7759 -4.89592,99.31352 7.69329,89.90219 -4.19594,83.89647 2.79714,50.4327 c 0,0 9.09093,21.4071 13.98593,20.6313 4.89499,-0.7759 20.15356,7.6104 29.37089,-3.6504 2.79653,-3.4164 6.99056,-9.0938 6.99056,-18.2272 0,-0.7247 -6.99331,-25.7857 -16.08401,-27.76705 -9.38555,-2.04561 -15.38267,-7.45338 -22.37552,2.63314" transform="translate(56 -28)"/>
+            <path id="m_path5" fill="none" stroke="none" stroke-width="2px" d="m 377.35601,679 0.62942,50.70461 238.63763,-2.09854 0.69952,-28.17278" transform="translate(-215 -235)"/>
+            <path id="m_path6" fill="none" stroke="none" stroke-width="2px" d="m 295,167.92434 90.92801,1.53952 2.09854,24.48299 331.56953,1.39903 -0.69947,-27.28105 30,-0.42049" transform="translate(155 220)"/>            
+        </g>-->
+
+        <!--All of the pipes and pumps displayed in the SVG-->
+        <g class="pipe1" id="pipe1">
+            <rect class="cls-1" id="r11" x="20.95" y="1.75" width="23.4" height="12"/>
+            <rect class="cls-1" id="r12" x="22.6" y="52.25" width="23.4" height="12" transform="translate(-50.5 65.75) rotate(-90)"/>
+            <path class="cls-1" id="p11" d="M67.6,40.55V55.4A10.87,10.87,0,0,1,56.65,66.2H40.3V50.15h7.8c3.3,0,2.7-.45,2.7-3v-6.6Z" transform="translate(-26.55 -26.8)"/>        
+        </g>
+            
+        <g class="pipe1_2">
+            <rect class="cls-1" id="r121" x="20.95" y="1.75" width="23.4" height="12"/>
+            <rect class="cls-1" id="r122" x="22.6" y="52.25" width="23.4" height="12" transform="translate(-50.5 65.75) rotate(-90)"/>
+            <path class="cls-1" id="p121" d="M67.6,40.55V55.4A10.87,10.87,0,0,1,56.65,66.2H40.3V50.15h7.8c3.3,0,2.7-.45,2.7-3v-6.6Z" transform="translate(-26.55 -26.8)"/>        
+        </g>
+
+        <g class="pipe1_3">
+            <rect class="cls-1" id="r131" x="20.95" y="1.75" width="23.4" height="12"/>
+            <rect class="cls-1" id="r132" x="22.6" y="52.25" width="23.4" height="12" transform="translate(-50.5 65.75) rotate(-90)"/>
+            <path class="cls-1" id="p131" d="M67.6,40.55V55.4A10.87,10.87,0,0,1,56.65,66.2H40.3V50.15h7.8c3.3,0,2.7-.45,2.7-3v-6.6Z" transform="translate(-26.55 -26.8)"/>        
+        </g>
+
+        <g class="pipe2">
+            <rect class="cls-2" id="r21" x="53.5" y="33.4" width="23.4" height="12" transform="translate(-2.25 78.65) rotate(-90)"/>
+            <rect class="cls-2" id="r22" x="1.75" y="32.35" width="23.4" height="12"/>
+            <path class="cls-2" id="p21" d="M33.55,58.3V42a10.87,10.87,0,0,1,10.8-11H59.2V47.8H52.6c-2.33,0-3,.19-3,2.7v7.8Z" transform="translate(-28.05 -25.95)"/>
+        </g>
+
+        <g class="pipe2_2">
+            <rect class="cls-2" id="r221" x="53.5" y="33.4" width="23.4" height="12" transform="translate(-2.25 78.65) rotate(-90)"/>
+            <rect class="cls-2" id="r222" x="1.75" y="32.35" width="23.4" height="12"/>
+            <path class="cls-2" id="p221" d="M33.55,58.3V42a10.87,10.87,0,0,1,10.8-11H59.2V47.8H52.6c-2.33,0-3,.19-3,2.7v7.8Z" transform="translate(-28.05 -25.95)"/>
+        </g>
+
+        <g class="pipe2_3">
+            <rect class="cls-2" id="r231" x="53.5" y="33.4" width="23.4" height="12" transform="translate(-2.25 78.65) rotate(-90)"/>
+            <rect class="cls-2" id="r232" x="1.75" y="32.35" width="23.4" height="12"/>
+            <path class="cls-2" id="p231" d="M33.55,58.3V42a10.87,10.87,0,0,1,10.8-11H59.2V47.8H52.6c-2.33,0-3,.19-3,2.7v7.8Z" transform="translate(-28.05 -25.95)"/>
+        </g>
+
+        <g class="pipe3" >
+            <rect class="cls-3" id="r31" x="14.13" y="44.5" width="23.4" height="12" transform="translate(-42.75 39.27) rotate(-90)"/>
+            <rect class="cls-3" id="r32" x="62.88" y="44.5" width="23.4" height="12" transform="translate(6 88.03) rotate(-90)"/>
+            <rect class="cls-3" id="r33" x="13.75" y="5.35" width="36.75" height="16.05"/> 
+        </g>
+
+        <g class="pipe3_2" >
+            <rect class="cls-3" id="r321" x="14.13" y="44.5" width="23.4" height="12" transform="translate(-42.75 39.27) rotate(-90)"/>
+            <rect class="cls-3" id="r322" x="62.88" y="144.5" width="23.4" height="12" transform="translate(6 88.03) rotate(-90)"/>
+            <rect class="cls-3" id="r323" x="13.75" y="5.35" width="136.75" height="16.05"/> 
+        </g>
+
+        <g class="pipe3_3" >
+            <rect class="cls-3" id="r331" x="14.13" y="44.5" width="23.4" height="12" transform="translate(-42.75 39.27) rotate(-90)"/>
+            <rect class="cls-3" id="r332" x="62.88" y="244.5" width="23.4" height="12" transform="translate(6 88.03) rotate(-90)"/>
+            <rect class="cls-3" id="r333" x="13.75" y="5.35" width="236.75" height="16.05"/> 
+        </g>
+
+        <g class="pipe3_4" >
+            <rect class="cls-3" id="r341" x="14.13" y="44.5" width="23.4" height="12" transform="translate(-42.75 39.27) rotate(-90)"/>
+            <rect class="cls-3" id="r342" x="62.88" y="184.5" width="23.4" height="12" transform="translate(6 88.03) rotate(-90)"/>
+            <rect class="cls-3" id="r343" x="13.75" y="5.35" width="176.75" height="16.05"/> 
+        </g>
+
+        <g class="pipe3_5" >
+            <rect class="cls-3" id="r351" x="14.13" y="44.5" width="23.4" height="12" transform="translate(-42.75 39.27) rotate(-90)"/>
+            <rect class="cls-3" id="r352" x="62.88" y="144.5" width="23.4" height="12" transform="translate(6 88.03) rotate(-90)"/>
+            <rect class="cls-3" id="r353" x="13.75" y="5.35" width="136.75" height="16.05"/> 
+        </g>
+
+        <g class="pipe5">
+            <rect class="cls-5" id="r51" x="42.06" y="31.87" width="16.42" height="77.13" transform="translate(-18.16 64.26) rotate(-90)"/>
+            <rect class="cls-5" id="r52" x="14.05" y="43.9" width="23.4" height="12" transform="translate(-42.15 39.2) rotate(-90)"/>
+            <rect class="cls-5" id="r53" x="63.1" y="83.9" width="23.4" height="12" transform="translate(6.9 88.25) rotate(-90)"/>
+            <g id="valve1" class="">
+                <circle class="cls-6" cx="52.2" cy="14.05" r="12.15"/>
+                <circle class="cls-7" cx="52.2" cy="14.05" r="3.15"/>
+                <line class="cls-7" x1="43.35" y1="5.5" x2="49.73" y2="11.88"/>
+                <line class="cls-7" x1="54.68" y1="16.83" x2="61.05" y2="23.2"/>
+                <line class="cls-7" x1="43.65" y1="22.75" x2="49.88" y2="16.53"/>
+                <line class="cls-7" x1="55.05" y1="11.35" x2="61.28" y2="5.13"/>
+            </g>
+
+        </g>
+
+        <g class="pipe7">
+            <line class="cls-12" id="L71" x1="32.28" y1="24.59" x2="32.28" y2="30.55"/>
+            <rect class="cls-9" id="r71" x="12.93" y="52.24" width="23.4" height="12" transform="translate(-50.49 61.96) rotate(-90)"/>
+            <rect class="cls-9" id="r72" x="61.68" y="52.24" width="23.4" height="12" transform="translate(-1.74 110.71) rotate(-90)"/>
+            <rect class="cls-9" id="r73" x="13.75" y="29.24" width="36.75" height="16.05"/>
+            
+            <!--Anything with an <a> tag is clickable and will bring you to the specified html page in this case psi.html -->
+            <a xlink:href="psi.html">
+                <circle class="c71" id="c71" cx="32.28" cy="13.34" r="11.59"/>
+                <path class="cls-10" id="p71" d="M57.8,32.78a8.9,8.9,0,0,1,.13,1.46,9,9,0,0,1-.35,2.46" transform="translate(-16.87 -20.91)"/>
+                <path class="cls-10" id="p72" d="M54.12,27.06a8.91,8.91,0,0,1,1.11.94,9.12,9.12,0,0,1,1.5,2" transform="translate(-16.87 -20.91)"/>
+                <path class="cls-10" id="p73" d="M47.24,25.72a7.78,7.78,0,0,1,1.46-.2,8.43,8.43,0,0,1,2.47.22" transform="translate(-16.87 -20.91)"/>
+                <path class="cls-10" id="p74" d="M40.58,32.78a8.9,8.9,0,0,0-.12,1.46,9,9,0,0,0,.34,2.46" transform="translate(-16.87 -20.91)"/>
+                <path class="cls-10" id="p75" d="M44.19,27.06A8.61,8.61,0,0,0,41.58,30" transform="translate(-16.87 -20.91)"/>
+                <line class="cls-11" id="L72" x1="32.28" y1="8.5" x2="32.28" y2="14.46"/>
+            </a>
+        </g>
+
+        <g class="pipe7_2">
+            <line class="cls-12_2" id="L721" x1="32.28" y1="24.59" x2="32.28" y2="30.55"/>
+            <rect class="cls-9_2" id="r721" x="12.93" y="52.24" width="23.4" height="12" transform="translate(-50.49 61.96) rotate(-90)"/>
+            <rect class="cls-9_2" id="r722" x="61.68" y="52.24" width="23.4" height="12" transform="translate(-1.74 110.71) rotate(-90)"/>
+            <rect class="cls-9_2" id="r723" x="13.75" y="29.24" width="36.75" height="16.05"/>
+
+            <a xlink:href="psi.html">
+                <circle class="c721" id="c721" cx="32.28" cy="13.34" r="11.59"/>
+                <path class="cls-10_2" id="p721" d="M57.8,32.78a8.9,8.9,0,0,1,.13,1.46,9,9,0,0,1-.35,2.46" transform="translate(-16.87 -20.91)"/>
+                <path class="cls-10_2" id="p722" d="M54.12,27.06a8.91,8.91,0,0,1,1.11.94,9.12,9.12,0,0,1,1.5,2" transform="translate(-16.87 -20.91)"/>
+                <path class="cls-10_2" id="p723" d="M47.24,25.72a7.78,7.78,0,0,1,1.46-.2,8.43,8.43,0,0,1,2.47.22" transform="translate(-16.87 -20.91)"/>
+                <path class="cls-10_2" id="p724" d="M40.58,32.78a8.9,8.9,0,0,0-.12,1.46,9,9,0,0,0,.34,2.46" transform="translate(-16.87 -20.91)"/>
+                <path class="cls-10_2" id="p725" d="M44.19,27.06A8.61,8.61,0,0,0,41.58,30" transform="translate(-16.87 -20.91)"/>
+                <line class="cls-11_2" id="L722" x1="32.28" y1="8.5" x2="32.28" y2="14.46"/>
+            </a>
+        </g>
+
+        <g class="pipe8"> 
+            <rect class="cls-13" id="r81" x="14.2" y="57.4" width="23.4" height="12" transform="translate(-55.65 67.55) rotate(-90)"/>
+            <rect class="cls-13" id="r82" x="64" y="29.2" width="23.4" height="12" transform="translate(92.75 -62.25) rotate(90)"/>
+            <path class="cls-13" id="p81" d="M69.7,27.25H53.35a10.94,10.94,0,0,0-11,10.8V52.3c0,2.55.6,3-2.7,3H31.9v16H48.25a10.87,10.87,0,0,0,11-10.8V46.3c0-2.55-.6-3,2.7-3h7.8Z" 
+                transform="translate(-18.15 -21.75)"/>
+        </g>
+
+        <g class="pipe8_2"> 
+            <rect class="cls-13" id="r821" x="14.2" y="57.4" width="23.4" height="12" transform="translate(-55.65 67.55) rotate(-90)"/>
+            <rect class="cls-13" id="r822" x="64" y="29.2" width="23.4" height="12" transform="translate(92.75 -62.25) rotate(90)"/>
+            <path class="cls-13" id="p821" d="M69.7,27.25H53.35a10.94,10.94,0,0,0-11,10.8V52.3c0,2.55.6,3-2.7,3H31.9v16H48.25a10.87,10.87,0,0,0,11-10.8V46.3c0-2.55-.6-3,2.7-3h7.8Z" 
+                transform="translate(-18.15 -21.75)"/>
+        </g>
+
+        <g class="pipe8_3"> 
+            <rect class="cls-13" id="r831" x="14.2" y="57.4" width="23.4" height="12" transform="translate(-55.65 67.55) rotate(-90)"/>
+            <rect class="cls-13" id="r832" x="64" y="29.2" width="23.4" height="12" transform="translate(92.75 -62.25) rotate(90)"/>
+            <path class="cls-13" id="p831" d="M69.7,27.25H53.35a10.94,10.94,0,0,0-11,10.8V52.3c0,2.55.6,3-2.7,3H31.9v16H48.25a10.87,10.87,0,0,0,11-10.8V46.3c0-2.55-.6-3,2.7-3h7.8Z" 
+                transform="translate(-18.15 -21.75)"/>
+        </g>
+
+        <g class="pipe8_4"> 
+            <rect class="cls-13" id="r841" x="14.2" y="57.4" width="23.4" height="12" transform="translate(-55.65 67.55) rotate(-90)"/>
+            <rect class="cls-13" id="r842" x="64" y="29.2" width="23.4" height="12" transform="translate(92.75 -62.25) rotate(90)"/>
+            <path class="cls-13" id="p841" d="M69.7,27.25H53.35a10.94,10.94,0,0,0-11,10.8V52.3c0,2.55.6,3-2.7,3H31.9v16H48.25a10.87,10.87,0,0,0,11-10.8V46.3c0-2.55-.6-3,2.7-3h7.8Z" 
+                transform="translate(-18.15 -21.75)"/>
+        </g>
+
+        <g class="pipe8_5"> 
+            <rect class="cls-13" id="r851" x="14.2" y="57.4" width="23.4" height="12" transform="translate(-55.65 67.55) rotate(-90)"/>
+            <rect class="cls-13" id="r852" x="64" y="29.2" width="23.4" height="12" transform="translate(92.75 -62.25) rotate(90)"/>
+            <path class="cls-13" id="p851" d="M69.7,27.25H53.35a10.94,10.94,0,0,0-11,10.8V52.3c0,2.55.6,3-2.7,3H31.9v16H48.25a10.87,10.87,0,0,0,11-10.8V46.3c0-2.55-.6-3,2.7-3h7.8Z" 
+                transform="translate(-18.15 -21.75)"/>
+        </g>
+
+        <g class="pipe9">
+            <rect class="cls-14" id="r91" x="13.75" y="50.65" width="23.4" height="12" transform="translate(-48.9 52.3) rotate(-90)"/>
+            <rect class="cls-14" id="r92" x="62.5" y="60.65" width="23.4" height="12" transform="translate(-0.15 101.05) rotate(-90)"/>
+            <rect class="cls-14" id="r93" x="13.75" y="18.75" width="46.75" height="16.05"/>
+
+            <g id="valve2" class="">
+                <polyline class="cls-14" id="po91" style="stroke:red" points="24.1 9 38.95 9 42.85 5.1 57.1 5.1" transform="translate(5)"/>
+                <line class="cls-15" x1="24.47" y1="15.75" x2="39.47" y2="15.75" transform="translate(5)"/>
+                <line class="cls-16" x1="27.25" y1="9.98" x2="27.25" y2="15.15" transform="translate(5)"/>
+                <line class="cls-16" x1="36.77" y1="9.98" x2="36.77" y2="15.15" transform="translate(5)"/>
+                <path class="cls-16" d="M45,36.1a4.8,4.8,0,0,1,9.6,0" transform="translate(-12.7 -29.8)"/>
+            </g>
+        </g>
+
+        <g class="pipe9_2">
+            <rect class="cls-14_2" id="r921" x="13.75" y="50.65" width="23.4" height="12" transform="translate(-48.9 52.3) rotate(-90)"/>
+            <rect class="cls-14_2" id="r922" x="62.5" y="60.65" width="23.4" height="12" transform="translate(-0.15 101.05) rotate(-90)"/>
+            <rect class="cls-14_2" id="r923" x="13.75" y="18.75" width="46.75" height="16.05"/>
+
+            <g id="valve2_2" class="">
+                <polyline class="cls-14_2" style="stroke:red" id="po921" points="24.1 9 38.95 9 42.85 5.1 57.1 5.1" transform="translate(5)"/>
+                <line class="cls-15_2" x1="24.47" y1="15.75" x2="39.47" y2="15.75" transform="translate(5)"/>
+                <line class="cls-16_2" x1="27.25" y1="9.98" x2="27.25" y2="15.15" transform="translate(5)"/>
+                <line class="cls-16_2" x1="36.77" y1="9.98" x2="36.77" y2="15.15" transform="translate(5)"/>
+                <path class="cls-16_2" d="M45,36.1a4.8,4.8,0,0,1,9.6,0" transform="translate(-12.7 -29.8)"/>
+            </g>
+        </g>
+
+        <a xlink:href="motor.html">
+            <g class="pump2">
+                <path class="cls-21" id="p_21" d="M60.84,72.05a18,18,0,1,1,0,1.2V26.55h-16v36.3l-.08,9.83a34,34,0,1,0,16.12-29Z" transform="translate(-37.85 -16.93)"/>
+                <path class="cls-21" id="p_22" d="M60.65,101.52A34,34,0,0,1,44.7,72.68l-.08,1.25v40.22H60.71v-11.8Z" transform="translate(-37.85 -16.93)"/>
+                <circle class="cls-21" id="c_21" style="fill:red" cx="78.97" cy="72.67" r="18.15" transform="matrix(0.58, -0.81, 0.81, 0.58, -64.01, 77.32)"/>
+                <rect class="cls-21" x="1.75" y="1.75" width="26.25" height="7.87"/>
+                <rect class="cls-21" x="39.64" y="114.15" width="26.25" height="7.88" transform="translate(67.67 219.25) rotate(-180)"/>
+                <line class="cls-22" x1="41.05" y1="50.8" x2="41.05" y2="22.11"/>
+                <line class="cls-22" x1="36.55" y1="53.05" x2="25.41" y2="46.86"/>
+                <line class="cls-22" x1="36.89" y1="58.34" x2="25.41" y2="65.09"/>
+                <circle class="cls-23" cx="41.05" cy="55.75" r="5.25"/>
+                <line class="cls-22" x1="41.05" y1="89.27" x2="41.05" y2="60.59"/>
+                <line class="cls-22" x1="56.8" y1="63.85" x2="45.66" y2="57.66"/>
+                <line class="cls-22" x1="57.48" y1="46.41" x2="46" y2="53.16"/>
+            </g>
+        </a>
+
+        <a xlink:href="motor.html">
+            <g class="pump2_2">
+                <path class="cls-21_2" id="p_221" d="M60.84,72.05a18,18,0,1,1,0,1.2V26.55h-16v36.3l-.08,9.83a34,34,0,1,0,16.12-29Z" transform="translate(-37.85 -16.93)"/>
+                <path class="cls-21_2" id="p_222" d="M60.65,101.52A34,34,0,0,1,44.7,72.68l-.08,1.25v40.22H60.71v-11.8Z" transform="translate(-37.85 -16.93)"/>
+                <circle class="cls-21_2" id="c_221" style="fill:red" cx="78.97" cy="72.67" r="18.15" transform="matrix(0.58, -0.81, 0.81, 0.58, -64.01, 77.32)"/>
+                <rect class="cls-21_2" id="r_221" x="1.75" y="1.75" width="26.25" height="7.87"/>
+                <rect class="cls-21_2" x="39.64" y="114.15" width="26.25" height="7.88" transform="translate(67.67 219.25) rotate(-180)"/>
+                <line class="cls-22_2" x1="41.05" y1="50.8" x2="41.05" y2="22.11"/>
+                <line class="cls-22_2" x1="36.55" y1="53.05" x2="25.41" y2="46.86"/>
+                <line class="cls-22_2" x1="36.89" y1="58.34" x2="25.41" y2="65.09"/>
+                <circle class="cls-23_2" cx="41.05" cy="55.75" r="5.25"/>
+                <line class="cls-22_2" x1="41.05" y1="89.27" x2="41.05" y2="60.59"/>
+                <line class="cls-22_2" x1="56.8" y1="63.85" x2="45.66" y2="57.66"/>
+                <line class="cls-22_2" x1="57.48" y1="46.41" x2="46" y2="53.16"/>
+            </g>    
+        </a>
+
+        <a xlink:href="motor.html">
+            <g class="pump5">
+                <rect class="cls-34" id="r_51" x="9.66" y="107.77" width="12.7" height="16.05"/>
+                <rect class="cls-34" id="r_52" x="72.85" y="107.77" width="12.7" height="16.05"/>
+                <rect class="cls-34" id="r_53" x="99.59" y="115.45" width="26.25" height="7.87" transform="translate(-29.86 228.51) rotate(-90)"/>
+                <rect class="cls-34" id="r_54" x="15.76" y="115.45" width="26.25" height="7.87" transform="translate(-113.7 144.67) rotate(-90)"/>
+                <rect class="cls-36" id="r_55" style="stroke: red;" x="22.36" y="1.75" width="50.61" height="47.37" rx="7.83"/>
+                <rect class="cls-34" id="r_56" style="stroke: red;" x="22.36" y="66.68" width="50.47" height="65.07" rx="3.93"/>
+                <rect class="cls-38" id="r_57" style="stroke: red;" x="28.86" y="49.12" width="37.78" height="10.62"/>
+                <polyline class="cls-35" points="40.81 72.87 30.18 72.87 30.18 125.26 40.81 125.26"/>
+                <line class="cls-37" x1="22.51" y1="12.67" x2="72.98" y2="12.67"/>
+                <line class="cls-37" x1="22.51" y1="39.53" x2="72.98" y2="39.53"/>
+                <line class="cls-37" x1="33.78" y1="12.67" x2="33.78" y2="39.53"/>
+                <line class="cls-37" x1="61.47" y1="12.67" x2="61.47" y2="39.53"/>
+                <line class="cls-37" x1="42.96" y1="12.67" x2="42.96" y2="39.53"/>
+                <line class="cls-37" x1="52.29" y1="12.67" x2="52.29" y2="39.53"/>
+                <path class="cls-39" d="M77.11,56.69c6,0,5.31,5.9,5.31,5.9h-23s-.74-5.9,5.31-5.9Z" transform="translate(-23.19 -3.6)"/>
+            </g>
+        </a>
+
+        <a xlink:href="motor.html">
+            <g class="pump5_2">
+                <rect class="cls-34_2" id="r_521" x="9.66"  y="107.77" width="12.7" height="16.05"/>
+                <rect class="cls-34_2" id="r_522" x="72.85" y="107.77" width="12.7" height="16.05"/>
+                <rect class="cls-34_2" id="r_523" x="99.59" y="115.45" width="26.25" height="7.87" transform="translate(-29.86 228.51) rotate(-90)"/>
+                <rect class="cls-34_2" id="r_524" x="15.76" y="115.45" width="26.25" height="7.87" transform="translate(-113.7 144.67) rotate(-90)"/>
+                <rect class="cls-36_2" id="r_525" style="stroke: red;" x="22.36" y="1.75" width="50.61" height="47.37" rx="7.83"/>
+                <rect class="cls-34_2" id="r_526" style="stroke: red;" x="22.36" y="66.68" width="50.47" height="65.07" rx="3.93"/>
+                <rect class="cls-38_2" id="r_527" style="stroke: red;" x="28.86" y="49.12" width="37.78" height="10.62"/>
+                <polyline class="cls-35_2" points="40.81 72.87 30.18 72.87 30.18 125.26 40.81 125.26"/>
+                <line class="cls-37_2" x1="22.51" y1="12.67" x2="72.98" y2="12.67"/>
+                <line class="cls-37_2" x1="22.51" y1="39.53" x2="72.98" y2="39.53"/>
+                <line class="cls-37_2" x1="33.78" y1="12.67" x2="33.78" y2="39.53"/>
+                <line class="cls-37_2" x1="61.47" y1="12.67" x2="61.47" y2="39.53"/>
+                <line class="cls-37_2" x1="42.96" y1="12.67" x2="42.96" y2="39.53"/>
+                <line class="cls-37_2" x1="52.29" y1="12.67" x2="52.29" y2="39.53"/>
+                <path class="cls-39_2" d="M77.11,56.69c6,0,5.31,5.9,5.31,5.9h-23s-.74-5.9,5.31-5.9Z" transform="translate(-23.19 -3.6)"/>
+            </g>
+        </a>
+
+        <a xlink:href="tanks.html">
+            <g class="pump6">
+                <rect class="cls-40" id="r_61" x="119.23" y="147.24" width="11.35" height="133.72" rx="1" transform="translate(-145.49 309.84) rotate(-90)"/>
+                <path class="tank" id="p_61" d="M171.4,201.92H63.5V45.09c0-7.87,23.4-14.17,50.63-14.17h6.65c27.22,0,50.62,6.3,50.62,14.17Z" transform="translate(-56.29 -29.17)"/>
+                <path class="cls-41" id="p_62" d="M173,181.08h9.22V166H173v-6.19h9.22V144.74H173v-6.3h9.22V123.37H173V117h9.22V101.88H173V95.47h9.22V80.39H173v-6.3h9.22V59H173V52.83H184.9c2.25,0,3.49,1,
+                    3.49,2.93V203.62H182.2V187.38H173Z" transform="translate(-56.29 -29.17)"/>
+            </g>
+        </a>
+
+        <a xlink:href="tanks.html">
+            <g class="pump6_2">
+                <rect class="cls-40" x="119.23" y="147.24" width="11.35" height="133.72" rx="1" transform="translate(-145.49 309.84) rotate(-90)"/>
+                <path class="tank" id="p_621" d="M171.4,201.92H63.5V45.09c0-7.87,23.4-14.17,50.63-14.17h6.65c27.22,0,50.62,6.3,50.62,14.17Z" transform="translate(-56.29 -29.17)"/>
+                <path class="cls-41" d="M173,181.08h9.22V166H173v-6.19h9.22V144.74H173v-6.3h9.22V123.37H173V117h9.22V101.88H173V95.47h9.22V80.39H173v-6.3h9.22V59H173V52.83H184.9c2.25,0,3.49,1,
+                    3.49,2.93V203.62H182.2V187.38H173Z" transform="translate(-56.29 -29.17)"/>
+            </g>
+        </a>
+
+        <a xlink:href="tanks.html">
+            <g class="pump6_3">
+                <rect class="cls-40" x="119.23" y="147.24" width="11.35" height="133.72" rx="1" transform="translate(-145.49 309.84) rotate(-90)"/>
+                <path class="tank" id="p_631" d="M171.4,201.92H63.5V45.09c0-7.87,23.4-14.17,50.63-14.17h6.65c27.22,0,50.62,6.3,50.62,14.17Z" transform="translate(-56.29 -29.17)"/>
+                <path class="cls-41" d="M173,181.08h9.22V166H173v-6.19h9.22V144.74H173v-6.3h9.22V123.37H173V117h9.22V101.88H173V95.47h9.22V80.39H173v-6.3h9.22V59H173V52.83H184.9c2.25,0,3.49,1,
+                    3.49,2.93V203.62H182.2V187.38H173Z" transform="translate(-56.29 -29.17)"/>
+            </g>
+        </a>
+
+        <a xlink:href="tanks.html">
+            <g class="pump7">
+                <polygon class="cls-42" points="4.32 195.3 4.32 189.56 28.4 180.3 35.15 183.3 4.32 195.3"/>
+                <line class="cls-43" x1="4.44" y1="192.43" x2="109.65" y2="192.43"/>
+                <polygon class="cls-42" points="4.32 235.57 4.32 229.84 109.73 189.45 109.73 195.19 4.32 235.57"/>
+                <polygon class="cls-42" points="4.32 189.45 4.32 195.19 109.73 235.57 109.73 229.84 4.32 189.45"/>
+                <polyline class="cls-44" points="4.44 251.5 4.44 150.58 109.65 150.58 109.65 251.5"/>
+                <rect class="cls-42" x="41.49" y="185.46" width="30.26" height="4.24"/>
+                <line class="cls-43" x1="4.44" y1="232.71" x2="109.65" y2="232.71"/>
+                <path class="cls-45" id="p_71" d="M167.9,171.31a61,61,0,0,1-44.44,18.86A62.63,62.63,0,0,1,79,171.31c-2.8-2.81-3.85-7.76-3.85-12.88v-17.3a6.93,6.93,0,1,1,0-13.86h46c1.24,0,2.26-1.51,
+                    2.26-2.76s-1-2.77-2.26-2.77h-46V97a6.93,6.93,0,1,1,0-13.86h46c1.24,0,2.26-1.49,2.26-2.74s-1-2.78-2.26-2.78h-46V52.89a6.93,6.93,0,1,1,0-13.86h46c1.24,0,2.26-1.47,
+                    2.26-2.72s-1-2.8-2.26-2.8H76.43v-4.8a61.1,61.1,0,0,1,94.37-.11s1.22.82,1.22,8v2.83a6.93,6.93,0,0,1,0,13.86V83.15A6.93,6.93,0,0,1,172,97v30.26a6.93,6.93,0,1,1,0,
+                    13.86v17.44C172,162.42,169.71,169.4,167.9,171.31Z" transform="translate(-66.48 -4.62)"/>
+                <polygon class="cls-42" points="64.73 172.35 64.73 178.09 109.73 195.3 109.73 189.56 64.73 172.35"/>
+            </g>
+        </a>
+
+        <a xlink:href="tanks.html">
+            <g class="pump7_2">
+                <polygon class="cls-42" points="4.32 195.3 4.32 189.56 28.4 180.3 35.15 183.3 4.32 195.3"/>
+                <line class="cls-43" x1="4.44" y1="192.43" x2="109.65" y2="192.43"/>
+                <polygon class="cls-42" points="4.32 235.57 4.32 229.84 109.73 189.45 109.73 195.19 4.32 235.57"/>
+                <polygon class="cls-42" points="4.32 189.45 4.32 195.19 109.73 235.57 109.73 229.84 4.32 189.45"/>
+                <polyline class="cls-44" points="4.44 251.5 4.44 150.58 109.65 150.58 109.65 251.5"/>
+                <rect class="cls-42" x="41.49" y="185.46" width="30.26" height="4.24"/>
+                <line class="cls-43" x1="4.44" y1="232.71" x2="109.65" y2="232.71"/>
+                <path class="cls-45" id="p_721" d="M167.9,171.31a61,61,0,0,1-44.44,18.86A62.63,62.63,0,0,1,79,171.31c-2.8-2.81-3.85-7.76-3.85-12.88v-17.3a6.93,6.93,0,1,1,0-13.86h46c1.24,0,2.26-1.51,
+                    2.26-2.76s-1-2.77-2.26-2.77h-46V97a6.93,6.93,0,1,1,0-13.86h46c1.24,0,2.26-1.49,2.26-2.74s-1-2.78-2.26-2.78h-46V52.89a6.93,6.93,0,1,1,0-13.86h46c1.24,0,2.26-1.47,
+                    2.26-2.72s-1-2.8-2.26-2.8H76.43v-4.8a61.1,61.1,0,0,1,94.37-.11s1.22.82,1.22,8v2.83a6.93,6.93,0,0,1,0,13.86V83.15A6.93,6.93,0,0,1,172,97v30.26a6.93,6.93,0,1,1,0,
+                    13.86v17.44C172,162.42,169.71,169.4,167.9,171.31Z" transform="translate(-66.48 -4.62)"/>
+                <polygon class="cls-42" points="64.73 172.35 64.73 178.09 109.73 195.3 109.73 189.56 64.73 172.35"/>
+            </g>
+        </a>
+
+        <!--Labels for all the tanks-->
+        <text x="40" y="210">Main Tank</text>
+        <text x="380" y="270">Tank 2</text>
+        <text x="940" y="210">Tank 3</text>
+        <text x="380" y="530">Tank 4</text>
+        <text x="940" y="460">Tank 5</text>
+    </symbol>
+</svg>
+
+<!--Note JS needs to go at bottom of page otherwise it will not run correclty-->
+<!--The first two JS calls are so you can use $ for queries. Therefor they must 
+    be before main.js and startUp.js otherwise you will get errors-->
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="../main.js"></script>
+<script src="../startUp.js"></script>

@@ -1,0 +1,430 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f1f1f1;
+    padding-bottom:  58px; /*footer height*/
+    position: relative;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    width: 100vw;
+    background-color: #333;
+    padding: 20px;
+}
+
+header h1{
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #2785bb, #27bb47);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+header p {
+    background: linear-gradient(to right, #2785bb, #27bb47);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+main {
+    width: 100vw;
+    /* This works well for every browser except maybe IE
+    min-height: calc(100vh -211px -58px); viewport height minus header height minus footer height
+    */
+}
+ 
+footer {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+}
+
+.container{
+    /*This is how I centered the svg in the <main>*/
+    width: auto;
+    text-align: center;
+}
+
+.content{
+    display: none;
+}
+
+.pipe1{
+    transform-origin: 0 0;
+    transform: translate(283.5px, 172px) rotate(90deg) ;    
+}
+
+.pipe1_2{
+    transform: translate(370px, 202.5px);
+}
+
+.pipe1_3{
+    transform: translate(370px, 462px);
+}
+
+.pipe2{
+    transform-origin: 0 0;
+    transform: translate(265.5px, 45px) rotate(90deg) ;    
+}
+
+.pipe2_2{
+    transform-origin: 0 0;
+    transform: translate(176.5px, 85px) rotate(90deg) ;    
+}
+
+.pipe2_3{
+    transform-origin: 0 0;
+    transform: translate(149.5px, 506.5px) rotate(-90deg) ;    
+}
+
+.pipe3{
+    transform: translate(320px, 220.5px);
+}
+
+.pipe3_2{
+    transform: translate(696.5px, 142.5px);
+}
+
+.pipe3_3{
+    transform-origin: 0 0;
+    transform: translate(176.5px, 115px) rotate(90deg);
+}
+
+.pipe3_4{
+    transform: translate(180px, 480px);
+}
+
+.pipe3_5{
+    transform: translate(696.5px, 402.5px);
+}
+
+.pipe5{
+    transform: translate(130.5px, 45px);
+} #valve1{}
+
+.pipe7{
+    transform: translate(561px, 118.5px);
+}
+
+.pipe7_2{
+    transform: translate(561px, 379px);
+}
+
+.pipe8{
+    transform-origin: 0 0;
+    transform: translate(269.5px, 247px) scaleY(-1); 
+}
+
+.pipe8_2{
+    transform-origin: 0 0;
+    transform: translate(509.5px, 169px) scaleY(-1); 
+}
+
+.pipe8_3{
+    transform: translate(845px, 114.5px); 
+}
+
+.pipe8_4{
+    transform-origin: 0 0;
+    transform: translate(509.5px, 430px) scaleY(-1); 
+}
+
+.pipe8_5{
+    transform: translate(845px, 375.5px); 
+}
+
+.pipe9{
+    transform-origin: 0 0;
+    transform: translate(525px, 100px) scaleX(-1);
+} #valve2{}
+
+.pipe9_2{
+    transform-origin: 0 0;
+    transform: translate(525px, 360px) scaleX(-1);
+} #valve2_2{}
+
+.pump2{
+    transform: translate(237px, 77.5px);
+}
+
+.pump2_2{
+    transform: translate(148px, 367px);
+}
+
+.pump5{
+    transform: translate(613px, 40px);
+}
+
+.pump5_2{
+    transform: translate(613px, 300px);
+}
+
+.pump6{
+    /*flips the image across the y axis of the page then sends it back to the left side of the page*/
+    transform-origin: center;
+    transform: translate(calc(-100% + 139px)) scaleX(-1); 
+    
+}
+
+.pump6_2{
+    transform: translate(900px);
+}
+
+.pump6_3{
+    transform: translate(900px, 250px);
+}
+
+.pump7{
+    transform: translate(345.5px, 20px);
+}
+
+.pump7_2{
+    transform: translate(345.5px, 280px);
+}
+
+/*styles for SVGs and keyframe animations*/
+
+/*Pipe1*/
+.cls-1{fill:none;stroke:#231f20;stroke-linejoin:round;stroke-width:3.5px;}
+
+/*Pipe2*/
+.cls-2{fill:none;stroke:#231f20;stroke-linejoin:round;stroke-width:3.5px;}
+
+/*Pipe3*/
+.cls-3{fill:none;stroke:#231f20;stroke-linejoin:round;stroke-width:3.5px;}
+
+/*Pipe5*/
+.cls-5{fill:none;stroke:#231f20;stroke-linejoin:round;stroke-width:3.5px;}
+.cls-6{stroke:red;stroke-width:3.5px;fill:#fff;stroke-miterlimit:10;}
+.cls-7{fill:none;stroke:red;stroke-miterlimit:10;stroke-width:3px;}
+
+/*Pipe7*/
+.cls-9{fill:none;stroke-linejoin:round;stroke:#231f20;stroke-width:3.5px;}
+.c71{fill:none;stroke-linejoin: round;stroke: green;stroke-width: 3.5px;}
+.cls-10{fill:none;stroke-linejoin:round;stroke:green;stroke-width:2.23px;}
+.cls-11{stroke:green;fill:#fff;stroke-miterlimit:10;stroke-width:3px;}
+.cls-12{stroke:#231f20;fill:#fff;stroke-miterlimit:10;stroke-width:6px;}
+
+/*Pipe7_2*/
+.cls-9_2{fill:none;stroke-linejoin:round;stroke:#231f20;stroke-width:3.5px;}
+.c721{fill:none;stroke-linejoin: round;stroke: green;stroke-width: 3.5px;}
+.cls-10_2{fill:none;stroke-linejoin:round;stroke:green;stroke-width:2.23px;}
+.cls-11_2{stroke:green;fill:#fff;stroke-miterlimit:10;stroke-width:3px;}
+.cls-12_2{stroke:#231f20;fill:#fff;stroke-miterlimit:10;stroke-width:6px;}
+
+/*The classes switched to for all pipe 7's when problem occurs for animation*/
+.pressure{fill:none;stroke-linejoin: round;stroke-width: 3.5px;animation: water_psi 1s infinite;}
+.pressure2{fill:none;stroke-linejoin:round;stroke-width:2.23px;animation: water_psi 1s infinite;}
+.pressure3{fill:#fff;stroke-miterlimit:10;stroke-width:3px;animation: water_psi 1s infinite;}
+
+.pressure4{fill:none;stroke-linejoin: round;stroke-width: 3.5px;animation: water_psi 1s infinite;}
+.pressure5{fill:none;stroke-linejoin:round;stroke-width:2.23px;animation: water_psi 1s infinite;}
+.pressure6{fill:#fff;stroke-miterlimit:10;stroke-width:3px;animation: water_psi 1s infinite;}
+ 
+/*Makes the Gauge flash red and yellow*/
+@keyframes water_psi {
+    0%{
+        stroke: red;
+    }
+    50%{
+        stroke: yellow;
+    }
+    100%{
+        stroke:red;
+    }
+  }
+
+/*Pipe8*/
+.cls-13{fill:none;stroke:#231f20;stroke-linejoin:round;stroke-width:3.5px;}
+
+/*Pipe9*/
+.cls-14{fill:none;stroke:#231f20;stroke-linejoin:round;stroke-width:3.5px;}
+.cls-15{fill:none;stroke: red;stroke-linejoin:round;stroke-width:2.5px;}
+.cls-16{fill:none;stroke:red;stroke-linejoin:round;stroke-width:3px;}
+
+/*Pipe9_2*/
+.cls-14_2{fill:none;stroke:#231f20;stroke-linejoin:round;stroke-width:3.5px;}
+.cls-15_2{fill:none;stroke:red;stroke-linejoin:round;stroke-width:2.5px;}
+.cls-16_2{fill:none;stroke:red;stroke-linejoin:round;stroke-width:3px;}
+
+/*Pump2*/
+.cls-21{fill:none;stroke:#231f20;stroke-linejoin:round;stroke-width:3.5px;}
+.cls-22{fill:#ec1c24;stroke:#231f20;stroke-linejoin:round;stroke-width:1.46px;}
+.cls-23{fill:none;stroke:#231f20;stroke-linejoin:round;stroke-width:1.46px;}
+
+/*Pump2_2*/
+.cls-21_2{fill:none;stroke:#231f20;stroke-linejoin:round;stroke-width:3.5px;}
+.cls-22_2{fill:#ec1c24;stroke:#231f20;stroke-linejoin:round;stroke-width:1.46px;}
+.cls-23_2{fill:none;stroke:#231f20;stroke-linejoin:round;stroke-width:1.46px;}
+
+/*Pump5*/
+.cls-34{fill:none;stroke:#231f20;stroke-linejoin:round;stroke-width:3.5px;}
+.cls-35{fill:none;stroke:#231f20;stroke-linecap:round;stroke-miterlimit:10;stroke-width:2px;}
+.cls-36{fill:none;stroke:#231f20;stroke-linecap:round;stroke-miterlimit:10;stroke-width:3.5px;}
+.cls-37{fill:none;stroke:#231f20;stroke-miterlimit:10;stroke-width:2px;}
+.cls-38{fill:none;stroke:#231f20;stroke-miterlimit:10;stroke-width:3.5px;}
+.cls-39{fill:#231f20;}
+
+/*Pump5_2*/
+.cls-34_2{fill:none;stroke:#231f20;stroke-linejoin:round;stroke-width:3.5px;}
+.cls-35_2{fill:none;stroke:#231f20;stroke-linecap:round;stroke-miterlimit:10;stroke-width:2px;}
+.cls-36_2{fill:none;stroke:#231f20;stroke-linecap:round;stroke-miterlimit:10;stroke-width:3.5px;}
+.cls-37_2{fill:none;stroke:#231f20;stroke-miterlimit:10;stroke-width:2px;}
+.cls-38_2{fill:none;stroke:#231f20;stroke-miterlimit:10;stroke-width:3.5px;}
+.cls-39_2{fill:#231f20;}
+
+/*Pump6*/
+.tank{fill:none;stroke:#1f2223;stroke-miterlimit:10;stroke-width:3.5px;}
+.cls-40{fill:none;stroke:#1f2223;stroke-miterlimit:10;stroke-width:3.5px;}
+.cls-41{fill:#1f2323;}
+
+/*Pump7*/
+.cls-42{fill:#231f20;}
+.cls-43{fill:none;stroke:#231f20;stroke-miterlimit:10;stroke-width:5.66px;}
+.cls-44{fill:none;stroke:#231f20;stroke-miterlimit:10;stroke-width:6.6px;}
+.cls-45{fill:none;stroke:#231f20;stroke-miterlimit:10;stroke-width:3.5px;}
+
+
+/*water path animations*/
+/*The water paths' classes will change to draw when a button is pressed causing the 
+animation to look like the pipes are filling with water*/
+.draw{
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    stroke: rgb(36, 164, 249);
+    animation: draw 3s linear forwards;
+}
+@keyframes draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+
+  /*Button Styles and locations on Page*/
+  .water_psi{fill: rgb(0, 225, 255);}
+  .pump, .switch{fill: lightgray;}
+  #PSI1{transform: translate(658px, 175px);}
+  #PSI2{transform: translate(650px, 435px);}
+  #RP1{transform: translate(290px, 100px);}
+  #RP2{transform: translate(200px, 400px);}
+  #TP1{transform: translate(800px, 50px);}
+  #TP2{transform: translate(800px, 310px);}
+  #switch1{transform: translate(260px, 5px);}
+  #switch2{transform: translate(565px, 50px);}
+  #switch3{transform: translate(565px, 320px);}
+  #buttons g rect{stroke: black;stroke-width: 2px;}
+  #buttons{cursor: pointer;}
+
+  /*Animation for the Tanks filling with water*/
+  .fill {
+    animation-name: fillAction;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(.2, .6, .8, .4); /*means it will slow down the fill right in the middle*/
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+  }
+  .other{
+    /*This is more of the unfill animation however you can't see it because in JS it sets fill to none*/
+    animation-name: fillAction2; 
+    animation-iteration-count: 1;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes fillAction2 {
+    0% {
+      transform: translate(0, -5px);
+    }
+    100% {
+      transform: translate(0, 200px);
+    }
+  }
+  @keyframes fillAction {
+    0% {
+      transform: translate(0, 200px);
+    }
+    100% {
+      transform: translate(0, -5px);
+    }
+  }
+
+
+ .rotate {
+     animation: rotate 1s;  
+     transform-origin: 52.2px 14.05px;    
+ }
+
+ @keyframes rotate {
+     to{
+         transform: rotateZ(90deg);
+     }
+ }
+
+ .rv_rotate{
+     animation: rv_rotate 1s;
+     transform-origin: 52.2px 14.05px;
+ }
+
+ @keyframes rv_rotate {
+    to{
+        transform: rotateZ(-90deg);
+    }
+}
+
+.rotate2 #po91{
+    animation: rotate2 1s forwards;
+    transform-origin: 34.6px 41.5px;
+}
+
+@keyframes rotate2 {
+   to{
+       transform: rotateY(180deg);
+   }
+}
+
+.rv_rotate2 #po91{
+    animation: rv_rotate2 1s forwards;
+    transform-origin: 34.6px 41.5px;
+}
+@keyframes rv_rotate2 {
+    from{
+        transform: rotateY(180deg);
+    }
+    to{
+        transform: translate(-5px), rotateY(0deg);
+    }
+ }
+
+ .rotate2_2 #po921{
+    animation: rotate2_2 1s forwards;
+    transform-origin: 34.6px 41.5px;
+}
+
+@keyframes rotate2_2 {
+   to{
+       transform: rotateY(180deg);
+   }
+}
+
+.rv_rotate2_2 #po921{
+    animation: rv_rotate2 1s forwards;
+    transform-origin: 34.6px 41.5px;
+}
+@keyframes rv_rotate2_2 {
+    from{
+        transform: rotateY(180deg);
+    }
+    to{
+        transform: translate(-5px), rotateY(0deg);
+    }
+ }

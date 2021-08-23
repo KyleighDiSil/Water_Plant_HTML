@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    background-color: #f1f1f1;
+    padding-bottom:  58px; /*footer height*/
+    position: relative;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    width: 100vw;
+    background-color: #333;
+    padding: 20px;
+}
+
+header h1{
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #2785bb, #27bb47);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+header p {
+    background: linear-gradient(to right, #2785bb, #27bb47);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+main {
+    width: 100vw;
+    /* This works well for every browser except maybe IE
+    min-height: calc(100vh -211px -58px); viewport height minus header height minus footer height
+    */
+}
+
+footer {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+}
+
+.title{
+    font-style: normal;
+    color: #231f20;
+    text-align: center;
+    font-size: 40px;
+    padding: 10px;
+}
+
+svg{
+    width: 300px;
+    height: 500px;
+    display: flex;
+    margin:20px;
+    border: 3px solid rgb(43, 255, 0);
+}
+
+.img{
+    display: flex;
+    width: auto;
+    border: 3px solid rgb(255, 145, 0);
+}
+
+.content{
+    margin: 20px;
+    padding: 5px;
+    border: 3px solid rgb(0, 183, 255);
+}
+
+/*Pump2*/
+.cls-21{fill:none;stroke:#231f20;stroke-linejoin:round;stroke-width:3.5px;}
+.cls-22{fill:none;stroke:#231f20;stroke-linejoin:round;stroke-width:1.46px;}
+.cls-23{fill:none;stroke:#231f20;stroke-linejoin:round;stroke-width:1.46px;}
+
+/*Pump2_2*/
+.cls-21_2{fill:none;stroke:#231f20;stroke-linejoin:round;stroke-width:3.5px;}
+.cls-22_2{fill:none;stroke:#231f20;stroke-linejoin:round;stroke-width:1.46px;}
+.cls-23_2{fill:none;stroke:#231f20;stroke-linejoin:round;stroke-width:1.46px;}
+
+/*Pump5*/
+.cls-34{fill:none;stroke:#231f20;stroke-linejoin:round;stroke-width:3.5px;}
+.cls-35{fill:none;stroke:#231f20;stroke-linecap:round;stroke-miterlimit:10;stroke-width:2px;}
+.cls-36{fill:none;stroke:#231f20;stroke-linecap:round;stroke-miterlimit:10;stroke-width:3.5px;}
+.cls-37{fill:none;stroke:#231f20;stroke-miterlimit:10;stroke-width:2px;}
+.cls-38{fill:none;stroke:#231f20;stroke-miterlimit:10;stroke-width:3.5px;}
+.cls-39{fill:#231f20;}
+
+/*Pump5_2*/
+.cls-34_2{fill:none;stroke:#231f20;stroke-linejoin:round;stroke-width:3.5px;}
+.cls-35_2{fill:none;stroke:#231f20;stroke-linecap:round;stroke-miterlimit:10;stroke-width:2px;}
+.cls-36_2{fill:none;stroke:#231f20;stroke-linecap:round;stroke-miterlimit:10;stroke-width:3.5px;}
+.cls-37_2{fill:none;stroke:#231f20;stroke-miterlimit:10;stroke-width:2px;}
+.cls-38_2{fill:none;stroke:#231f20;stroke-miterlimit:10;stroke-width:3.5px;}
+.cls-39_2{fill:#231f20;}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water PSI</title>
+    <link rel="stylesheet" href="../css/psi.css">
+</head>
+<body>
+    <header>
+        <h1>Phoenix Contact</h1>
+        <p>Water Piping System</p>
+    </header>
+
+    <main>
+        <a href="index.html">
+            <h1 class="title">You Made it to the Pressure Gauge Page!</h1>
+        </a>
+        <div class="img">
+            <svg viewBox="0 0 80 50">
+                <g class="pipe7" transform="translate(8 15)">
+                    <line class="cls-12" id="L71" x1="32.28" y1="24.59" x2="32.28" y2="30.55"/>
+                    <rect class="cls-9" id="r71" x="12.93" y="52.24" width="23.4" height="12" transform="translate(-50.49 61.96) rotate(-90)"/>
+                    <rect class="cls-9" id="r72" x="61.68" y="52.24" width="23.4" height="12" transform="translate(-1.74 110.71) rotate(-90)"/>
+                    <rect class="cls-9" id="r73" x="13.75" y="29.24" width="36.75" height="16.05"/>
+                
+                    <circle class="c71" id="c71" cx="32.28" cy="13.34" r="11.59"/>
+                    <path class="cls-10" id="p71" d="M57.8,32.78a8.9,8.9,0,0,1,.13,1.46,9,9,0,0,1-.35,2.46" transform="translate(-16.87 -20.91)"/>
+                    <path class="cls-10" id="p72" d="M54.12,27.06a8.91,8.91,0,0,1,1.11.94,9.12,9.12,0,0,1,1.5,2" transform="translate(-16.87 -20.91)"/>
+                    <path class="cls-10" id="p73" d="M47.24,25.72a7.78,7.78,0,0,1,1.46-.2,8.43,8.43,0,0,1,2.47.22" transform="translate(-16.87 -20.91)"/>
+                    <path class="cls-10" id="p74" d="M40.58,32.78a8.9,8.9,0,0,0-.12,1.46,9,9,0,0,0,.34,2.46" transform="translate(-16.87 -20.91)"/>
+                    <path class="cls-10" id="p75" d="M44.19,27.06A8.61,8.61,0,0,0,41.58,30" transform="translate(-16.87 -20.91)"/>
+                    <line class="cls-11" id="L72" x1="32.28" y1="8.5" x2="32.28" y2="14.46"/>
+                </g>
+
+                <text stroke="black" x="2" y="0">Water PSI1</text>
+            </svg>
+            <div class="content">
+                <p>Here is some content</p>
+            </div>
+        </div>
+
+        <div class="img">
+            <svg viewBox="0 0 80 50">
+                <g class="pipe7_2" transform="translate(8 15)">
+                    <line class="cls-12_2" id="L721" x1="32.28" y1="24.59" x2="32.28" y2="30.55"/>
+                    <rect class="cls-9_2" id="r721" x="12.93" y="52.24" width="23.4" height="12" transform="translate(-50.49 61.96) rotate(-90)"/>
+                    <rect class="cls-9_2" id="r722" x="61.68" y="52.24" width="23.4" height="12" transform="translate(-1.74 110.71) rotate(-90)"/>
+                    <rect class="cls-9_2" id="r723" x="13.75" y="29.24" width="36.75" height="16.05"/>
+
+                    <circle class="c721" id="c721" cx="32.28" cy="13.34" r="11.59"/>
+                    <path class="cls-10_2" id="p721" d="M57.8,32.78a8.9,8.9,0,0,1,.13,1.46,9,9,0,0,1-.35,2.46" transform="translate(-16.87 -20.91)"/>
+                    <path class="cls-10_2" id="p721" d="M54.12,27.06a8.91,8.91,0,0,1,1.11.94,9.12,9.12,0,0,1,1.5,2" transform="translate(-16.87 -20.91)"/>
+                    <path class="cls-10_2" id="p721" d="M47.24,25.72a7.78,7.78,0,0,1,1.46-.2,8.43,8.43,0,0,1,2.47.22" transform="translate(-16.87 -20.91)"/>
+                    <path class="cls-10_2" id="p721" d="M40.58,32.78a8.9,8.9,0,0,0-.12,1.46,9,9,0,0,0,.34,2.46" transform="translate(-16.87 -20.91)"/>
+                    <path class="cls-10_2" id="p721" d="M44.19,27.06A8.61,8.61,0,0,0,41.58,30" transform="translate(-16.87 -20.91)"/>
+                    <line class="cls-11_2" id="L722" x1="32.28" y1="8.5" x2="32.28" y2="14.46"/>
+                </g>
+                <text stroke="black" x="2" y="0">Water PSI2</text>
+            </svg>
+            <div class="content">
+                <p>Here is some content</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script>, Piping HMI</p>
+    </footer>
+</body>
+</html>
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    if(localStorage.getItem('j') == "false"){
+        //j=false;
+        $( ".cls-10_2" ).switchClass( "cls-10_2", "pressure5", 0, "easeInOutQuad");
+        $( ".cls-11_2" ).switchClass( "cls-11_2", "pressure6", 0, "easeInOutQuad");
+        $( ".c721" ).switchClass( "c721", "pressure4", 0, "easeInOutQuad");
+    }
+    else{
+        //j=true;
+        $( ".pressure4" ).switchClass( "pressure4", "c721", 0, "easeInOutQuad");
+        $( ".pressure5" ).switchClass( "pressure5", "cls-10_2", 0, "easeInOutQuad");
+        $( ".pressure6" ).switchClass( "pressure6", "cls-11_2", 0, "easeInOutQuad");
+    }
+
+    if(localStorage.getItem('i') == "false"){
+        //i=false;
+        $( ".cls-10" ).switchClass( "cls-10", "pressure2", 0, "easeInOutQuad");
+        $( ".cls-11" ).switchClass( "cls-11", "pressure3", 0, "easeInOutQuad");
+        $( ".c71" ).switchClass( "c71", "pressure", 0, "easeInOutQuad");
+    }
+    else{
+        //i=true;
+        $( ".pressure" ).switchClass( "pressure", "c71", 0, "easeInOutQuad");
+        $( ".pressure2" ).switchClass( "pressure2", "cls-10", 0, "easeInOutQuad");
+        $( ".pressure3" ).switchClass( "pressure3", "cls-11", 0, "easeInOutQuad");
+    }
+</script>
